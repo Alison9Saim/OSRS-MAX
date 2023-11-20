@@ -1,0 +1,76 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+
+
+
+
+
+<div class="container">
+
+    <div class="row height d-flex justify-content-center align-items-center" style="padding-top: 200px;">
+
+
+
+
+        <div class="col-md-8">
+
+
+        
+            <form action="/" method="post">
+
+                <div class="search d-flex">
+
+                    <select id="" name="accType" class="form-select" aria-label="Default select example">
+                        <!-- <option selected>Main</option> -->
+                        <svg xmlns="http://www.w3.org/2000/svg" height="1.5em" viewBox="0 0 512 512"><path d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"/></svg>
+                        <% for (key in accountMode) { %>
+                            <% if (accountMode[key].active == true) { %>
+                            <option value="<%= accountMode[key].name %>"> <%= accountMode[key].label %>  </option>
+                            <% } %>
+                        <% } %>
+                    </select>
+
+
+            
+                    
+                    <input type="text" name="inputName" class="form-control" placeholder="Enter RSN Name" style="line-height: 2em;">
+                    <button type="submit" name="Submit" class="btn btn-primary">Search</button>
+                
+                </div>
+            </form>
+        
+        </div>
+        
+    </div>
+
+
+    <% if (a == "error") { %>
+        <div class="row">
+            <div class="col">
+                <br>
+                <div class="alert alert-danger" role="alert" style="text-align: center;">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <h4>No player found!</h4>
+                    Please review the account type and or rsn name!
+                </div>
+            </div>
+        </div>
+    <% } %>
+
+
+    <div class="row">
+        <div class="col">
+            
+
+            
+        </div>
+    </div>
+
+
+    
+    
+
+</div>
+
+
+<%- include('../partials/footer') %>

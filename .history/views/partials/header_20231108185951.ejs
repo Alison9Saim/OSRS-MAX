@@ -1,0 +1,33 @@
+<header class="p-3 bg-dark text-white mb-4">
+    <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                <li><a href="/" class="nav-link px-2 text-white">Home</a></li>
+                <li><a href="/contact" class="nav-link px-2 text-white">Contact</a></li>
+                <li><a href="/about" class="nav-link px-2 text-white">About</a></li>
+            </ul>
+            <div id="theme-btn" class="far fa-moon"></div>
+        </div>
+    </div>
+</header>
+
+<script>
+
+    //gets the button by ID from your HTML element
+const themeBtn = document.getElementById("theme-btn");
+//when you click that button
+themeBtn.onclick = () => {
+//the default class "fa-moon" switches to "fa-sun" on toggle
+  themeBtn.classList.toggle("fa-sun");
+//after the switch on toggle, if your button contains "fa-sun" class
+  if (themeBtn.classList.contains("fa-sun")) {
+//onclicking themeBtn, the changeTheme styling will be applied to the body of your HTML
+    document.body.classList.add("changeTheme");
+  } else {
+// onclicking themeBtn, applied changeTheme styling will be removed
+    document.body.classList.remove("changeTheme");
+  }
+}
+
+console.log("This is the other JS file");
+</script>

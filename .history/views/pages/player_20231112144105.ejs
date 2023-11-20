@@ -1,0 +1,64 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+
+<body>
+ 
+    <div class="container">
+      <br>
+        <% if (user) { %>
+            <div class="row">
+                <div class="col">
+                    <h2> <%= totalEXPRemain %> </h2>
+                </div>
+                <div class="col">
+                    <h2> <%= expToMax %> </h2>
+                </div>
+    
+                <div class="col">
+                    <h2> <%= percentToMax%>
+                        <% if (percentToMax != "") { %>
+                            %
+                        <% } %>
+                    
+                    
+                    </h2>
+                </div>
+            </div>
+        <% } %>
+    
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Skill</th>
+            <th scope="col">Level</th>
+            <th scope="col">Current XP</th>
+            <th scope="col">Rank</th>
+            <th scope="col">XP left to 99</th>
+          </tr>
+        </thead>
+    
+    
+        <tbody>
+          <% for (key in playerDetails) { %>
+            <tr>
+              <td> <%= key %> <image src="/images/Hitpoints_icon.png"></image> </th>
+                <% if (playerDetails[key].level === 99) { %>
+                    <td style="background-color: #64d864;"> <%= playerDetails[key].level %> </td>
+                <%} else { %>
+                    <td> <%= playerDetails[key].level %> </td>
+                <% } %>   
+              <td> <%= playerDetails[key].xp %> </td>
+              <td> <%= playerDetails[key].rank %> </td>
+              <td> <%= playerDetails[key].xpLeft %> </td>
+            </tr>
+          <% } %>
+        </tbody>
+      </table>
+    </br><br></br>
+    </div>
+
+ 
+</body>
+
+
+<%- include('../partials/footer') %>

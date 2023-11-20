@@ -1,0 +1,60 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+
+
+
+
+
+<div class="container">
+
+
+
+
+    <div class="row height d-flex justify-content-center align-items-center">
+
+
+
+
+        <div class="col-md-8">
+
+
+        
+            <form action="/" method="post">
+
+                <div class="search d-flex">
+
+                    <select id="" name="accType" class="form-select" aria-label="Default select example">
+                        <!-- <option selected>Main</option> -->
+                        <% for (key in accountMode) { %>
+                            <% if (accountMode[key].active == true) { %>
+                            <option value="<%= accountMode[key].name %>"> <%= accountMode[key].label %> </option>
+                            <% } %>
+                        <% } %>
+                    </select>
+
+
+                    <i class="fa fa-search"></i>
+                    
+                    <input type="text" name="inputName" class="form-control" placeholder="Enter RSN Name">
+                    <button type="submit" name="Submit" class="btn btn-primary">Search</button>
+                
+                </div>
+            </form>
+        
+        </div>
+        
+    </div>
+
+
+    <% if (a == "error") { %>
+        <h2> No player found</h2>
+      <% } %>
+
+
+    
+    
+
+</div>
+
+
+<%- include('../partials/footer') %>

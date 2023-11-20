@@ -1,0 +1,19 @@
+{
+  "name": "osrs-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node --inspect server.js"
+  },
+  "author": "alison saim",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "font-awesome": "^4.7.0",
+    "osrs-json-hiscores": "^2.16.0",
+    "path": "^0.12.7"
+  }
+}

@@ -1,0 +1,67 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+
+<body>
+ 
+    <div class="container">
+      <br>
+        <% if (user) { %>
+            <div class="row">
+                <div class="col">
+                    <h2> <%= totalEXPRemain %> </h2>
+                </div>
+                <div class="col">
+                    <h2> <%= expToMax %> </h2>
+                </div>
+    
+                <div class="col">
+                    <h2> <%= percentToMax%>
+                        <% if (percentToMax != "") { %>
+                            %
+                        <% } %>
+                    
+                    
+                    </h2>
+                </div>
+            </div>
+        <% } %>
+    
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Skill</th>
+            <th scope="col" style="text-align: right;">Level</th>
+            <th scope="col" style="text-align: right;">Current XP</th>
+            <th scope="col" style="text-align: right;">Rank</th>
+            <th scope="col" style="text-align: right;">XP left to 99</th>
+          </tr>
+        </thead>
+    
+    
+        <tbody>
+          <% for (key in playerDetails) { %>
+            <tr>
+              <td> <image src="/images/skill_icons/<%=key%>_icon.png"></image> <%= key %> </th>
+                <% if (playerDetails[key].level === 99) { %>
+                    <td style="background-color: #64d864; text-align: right;"> <%= playerDetails[key].level %> </td>
+                <%} else { %>
+                    <td style="text-align: right;"> <%= playerDetails[key].level %> </td>
+                <% } %>   
+              <td style="text-align: right;"> <%= playerDetails[key].xp %> </td>
+              <td style="text-align: right;"> <%= playerDetails[key].rank %> </td>
+              <td style="text-align: right;"> <%= playerDetails[key].xpLeft %> </td>
+            </tr>
+          <% } %>
+        </tbody>
+      </table>
+    </br><br></br>
+
+    <i class="fa-brands fa-facebook"></i>
+
+    </div>
+
+ 
+</body>
+
+
+<%- include('../partials/footer') %>
