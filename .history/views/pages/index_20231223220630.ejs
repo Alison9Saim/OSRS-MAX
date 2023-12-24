@@ -1,0 +1,179 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+
+
+
+
+
+<div class="container">
+
+    <div class="row height d-flex justify-content-center align-items-center" style="padding-top: 200px;">
+
+
+
+
+        <div class="col-md-8">
+
+
+        
+            <form action="/" method="post">
+
+                <div class="search d-flex">
+                    
+                  <!-- 
+                    <select id="" name="accType" class="form-select" aria-label="Default select example">
+                        <option selected>Main</option>
+                        
+                        <% for (key in accountMode) { %>
+                            <% if (accountMode[key].active == true) { %>
+                            <option value="<%= accountMode[key].name %>"> <%= accountMode[key].label %>  </option>
+                            <% } %>
+                        <% } %>
+                    </select>
+                  -->
+
+            
+                    
+                    <input type="text" name="inputName" class="form-control" placeholder="Enter RSN Name" style="line-height: 2em;">
+                    <button type="submit" name="Submit" class="btn btn-primary">Search</button>
+
+
+                    <div class="">
+                      <div class="container">
+                        <div class="setting-description">
+                          <div class="setting-description-text" style="margin-left: 15px">
+                            <h10>Description</h10>
+                          </div>
+                        </div>
+                  
+                        <div class="wrapper-dropdown" id="dropdown">
+                          <span class="selected-display" id="destination">Pick an option!</span>
+                          <svg class="arrow" id="drp-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="transition-all ml-auto rotate-180">
+                            <path d="M7 14.5l5-5 5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                          </svg>
+                          <ul class="dropdown select">
+                  
+                              <% for (key in accountMode) { %>
+                                  <% if (accountMode[key].active == true) { %>
+                                  <!-- <option value="<%= accountMode[key].name %>"> <%= accountMode[key].label %>  </option> -->
+                                  <li class="item"> <%= accountMode[key].label %> </li>
+                                  <% } %>
+                              <% } %>
+                          
+                              <!--
+                            <li class="item">Option 1</li>
+                            <li class="item">Option 2</li>
+                            <li class="item">Option 3</li>
+                            <li class="item">Option 4</li>
+                            -->
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+
+
+
+                
+                </div>
+            </form>
+        
+        </div>
+        
+    </div>
+
+
+    <% if (a == "error") { %>
+        <div class="row">
+            <div class="col">
+                <br>
+                <div class="alert alert-danger" role="alert" style="text-align: center;">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <h4>No player found!</h4>
+                    Please review the account type and or rsn name!
+                </div>
+            </div>
+        </div>
+    <% } %>
+
+
+
+
+
+
+
+  <script>
+    var selectedAll = document.querySelectorAll(".wrapper-dropdown");
+
+selectedAll.forEach((selected) => {
+    console.log("something else");
+  var optionsContainer = selected.children[2];
+  debugger;
+  var optionsList = selected.querySelectorAll("div.wrapper-dropdown li");
+
+  selected.addEventListener("click", () => {
+    var arrow = selected.children[1];
+
+    if (selected.classList.contains("active")) {
+      handleDropdown(selected, arrow, false);
+    } else {
+      var currentActive = document.querySelector(".wrapper-dropdown.active");
+
+      if (currentActive) {
+        var anotherArrow = currentActive.children[1];
+        handleDropdown(currentActive, anotherArrow, false);
+      }
+
+      handleDropdown(selected, arrow, true);
+    }
+  });
+
+  // update the display of the dropdown
+  for (var o of optionsList) {
+    o.addEventListener("click", () => {
+      selected.querySelector(".selected-display").innerHTML = o.innerHTML;
+    });
+  }
+});
+
+// check if anything else ofther than the dropdown is clicked
+window.addEventListener("click", function (e) {
+    console.log("other click");
+  if (e.target.closest(".wrapper-dropdown") === null) {
+    closeAllDropdowns();
+  }
+});
+
+// close all the dropdowns
+function closeAllDropdowns() {
+  var selectedAll = document.querySelectorAll(".wrapper-dropdown");
+  selectedAll.forEach((selected) => {
+    var optionsContainer = selected.children[2];
+    var arrow = selected.children[1];
+
+    handleDropdown(selected, arrow, false);
+  });
+}
+
+// open all the dropdowns
+function handleDropdown(dropdown, arrow, open) {
+    debugger;
+    console.log("clicked");
+  if (open) {
+    arrow.classList.add("rotated");
+    dropdown.classList.add("active");
+  } else {
+    arrow.classList.remove("rotated");
+    dropdown.classList.remove("active");
+  }
+}
+
+  </script>
+
+
+    
+    
+
+</div>
+
+
+<%- include('../partials/footer') %>
